@@ -91,6 +91,13 @@ const badgeCount =
             <div className="text-3xl font-bold text-blue-700">{badgeCount}</div>
           </div>
         </div>
+        <a
+  href="/scam-spotter"
+  className="mt-10 block rounded-xl bg-blue-700 p-6 text-white shadow-sm hover:bg-blue-800"
+>
+  <div className="text-2xl font-bold">🎮 Play Scam Spotter</div>
+  <div className="mt-1 text-blue-100">Can you tell safe messages from scams? Test yourself.</div>
+</a>
 
         <h2 className="mt-12 text-2xl font-bold">Safety lessons</h2>
         <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
