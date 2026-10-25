@@ -146,7 +146,9 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="border-t border-slate-200 bg-white py-8 text-center text-sm text-slate-500">
-        © 2026 StudentShield. Built to keep students safe online.
+        © 2026 StudentShield. Built to keep students safe online. ·{" "}
+<a href="/help" className="underline">Get help</a> ·{" "}
+<a href="/privacy" className="underline">Privacy</a>
       </footer>
     </main>
   );

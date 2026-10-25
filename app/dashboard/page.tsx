@@ -119,6 +119,10 @@ const badgeCount =
   <div className="text-2xl font-bold">🚨 Report an incident</div>
   <div className="mt-1 text-red-100">Bullying, scam or hacking? Report it safely, even anonymously.</div>
 </a>
+<a href="/help" className="mt-4 block rounded-xl border border-slate-300 bg-white p-6 shadow-sm hover:border-blue-400">
+  <div className="text-2xl font-bold">🆘 Get help</div>
+  <div className="mt-1 text-slate-600">Helplines and what to do if something goes wrong.</div>
+</a>
 
         <h2 className="mt-12 text-2xl font-bold">Safety lessons</h2>
         <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
