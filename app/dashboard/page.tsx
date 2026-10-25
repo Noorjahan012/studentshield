@@ -112,6 +112,13 @@ const badgeCount =
   <div className="text-2xl font-bold">🔗 Link Checker</div>
   <div className="mt-1 text-slate-300">Paste a suspicious link and see the warning signs.</div>
 </a>
+<a
+  href="/report"
+  className="mt-4 block rounded-xl bg-red-600 p-6 text-white shadow-sm hover:bg-red-700"
+>
+  <div className="text-2xl font-bold">🚨 Report an incident</div>
+  <div className="mt-1 text-red-100">Bullying, scam or hacking? Report it safely, even anonymously.</div>
+</a>
 
         <h2 className="mt-12 text-2xl font-bold">Safety lessons</h2>
         <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
