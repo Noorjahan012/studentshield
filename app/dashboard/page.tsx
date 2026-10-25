@@ -4,21 +4,42 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "../../lib/supabase";
 
+type Lesson = {
+  id: number;
+  slug: string;
+  title: string;
+  summary: string;
+  icon: string;
+  xp: number;
+};
+
 export default function DashboardPage() {
   const router = useRouter();
   const [name, setName] = useState("");
+  const [lessons, setLessons] = useState<Lesson[]>([]);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
     const supabase = createClient();
-    supabase.auth.getUser().then(({ data }) => {
+
+    async function load() {
+      const { data } = await supabase.auth.getUser();
       if (!data.user) {
         router.push("/login");
-      } else {
-        setName(data.user.user_metadata?.full_name || data.user.email || "Student");
-        setReady(true);
+        return;
       }
-    });
+      setName(data.user.user_metadata?.full_name || data.user.email || "Student");
+
+      const { data: lessonData } = await supabase
+        .from("lessons")
+        .select("id, slug, title, summary, icon, xp")
+        .order("id");
+
+      setLessons(lessonData || []);
+      setReady(true);
+    }
+
+    load();
   }, [router]);
 
   async function handleLogout() {
@@ -43,9 +64,9 @@ export default function DashboardPage() {
         </button>
       </header>
 
-      <section className="mx-auto max-w-4xl px-6 py-10">
+      <section className="mx-auto max-w-5xl px-6 py-10">
         <h1 className="text-3xl font-bold">Welcome, {name} 👋</h1>
-        <p className="mt-2 text-slate-600">Your safety dashboard. Lessons and tools are coming soon.</p>
+        <p className="mt-2 text-slate-600">Pick a lesson and learn how to stay safe online.</p>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-3">
           <div className="rounded-xl border border-slate-200 bg-white p-6">
@@ -61,6 +82,26 @@ export default function DashboardPage() {
             <div className="text-3xl font-bold text-blue-700">0</div>
           </div>
         </div>
+
+        <h2 className="mt-12 text-2xl font-bold">Safety lessons</h2>
+        <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {lessons.map((l) => (
+            <a
+              key={l.id}
+              href={`/lessons/${l.slug}`}
+              className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm hover:border-blue-400 hover:shadow-md"
+            >
+              <div className="text-3xl">{l.icon}</div>
+              <h3 className="mt-3 text-lg font-semibold">{l.title}</h3>
+              <p className="mt-2 text-sm text-slate-600">{l.summary}</p>
+              <div className="mt-4 text-sm font-semibold text-blue-700">+{l.xp} XP →</div>
+            </a>
+          ))}
+        </div>
+
+        {lessons.length === 0 && (
+          <p className="mt-4 text-slate-600">No lessons found yet.</p>
+        )}
       </section>
     </main>
   );
