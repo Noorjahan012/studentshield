@@ -17,6 +17,7 @@ export default function DashboardPage() {
   const router = useRouter();
   const [name, setName] = useState("");
   const [lessons, setLessons] = useState<Lesson[]>([]);
+  const [doneIds, setDoneIds] = useState<number[]>([]);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
@@ -34,8 +35,11 @@ export default function DashboardPage() {
         .from("lessons")
         .select("id, slug, title, summary, icon, xp")
         .order("id");
-
-      setLessons(lessonData || []);
+    setLessons(lessonData || []);
+      const { data: progressData } = await supabase
+  .from("lesson_progress")
+  .select("lesson_id");
+   setDoneIds((progressData || []).map((p) => p.lesson_id));
       setReady(true);
     }
 
@@ -47,7 +51,12 @@ export default function DashboardPage() {
     await supabase.auth.signOut();
     router.push("/login");
   }
-
+const doneLessons = lessons.filter((l) => doneIds.includes(l.id));
+const totalXp = doneLessons.reduce((sum, l) => sum + l.xp, 0);
+const badgeCount =
+  (doneLessons.length >= 1 ? 1 : 0) +
+  (doneLessons.length >= 3 ? 1 : 0) +
+  (doneLessons.length >= lessons.length && lessons.length > 0 ? 1 : 0);
   if (!ready) {
     return <main className="p-10 text-slate-600">Loading...</main>;
   }
@@ -71,15 +80,15 @@ export default function DashboardPage() {
         <div className="mt-8 grid gap-4 sm:grid-cols-3">
           <div className="rounded-xl border border-slate-200 bg-white p-6">
             <div className="text-sm text-slate-500">XP points</div>
-            <div className="text-3xl font-bold text-blue-700">0</div>
+            <div className="text-3xl font-bold text-blue-700">{totalXp}</div>
           </div>
           <div className="rounded-xl border border-slate-200 bg-white p-6">
             <div className="text-sm text-slate-500">Lessons done</div>
-            <div className="text-3xl font-bold text-blue-700">0</div>
+            <div className="text-3xl font-bold text-blue-700">{doneLessons.length} / {lessons.length}</div>
           </div>
           <div className="rounded-xl border border-slate-200 bg-white p-6">
             <div className="text-sm text-slate-500">Badges</div>
-            <div className="text-3xl font-bold text-blue-700">0</div>
+            <div className="text-3xl font-bold text-blue-700">{badgeCount}</div>
           </div>
         </div>
 
