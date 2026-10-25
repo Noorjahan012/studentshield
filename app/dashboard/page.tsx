@@ -65,6 +65,9 @@ const badgeCount =
     <main className="min-h-screen bg-slate-50">
       <header className="flex items-center justify-between border-b border-slate-200 bg-white px-6 py-4">
         <div className="text-xl font-bold text-blue-700">🛡️ StudentShield</div>
+        <a href="/admin" className="mr-3 text-sm font-semibold text-blue-700 underline">
+  Admin
+</a>
         <button
           onClick={handleLogout}
           className="rounded-lg bg-slate-800 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-900"
