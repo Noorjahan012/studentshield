@@ -98,6 +98,13 @@ const badgeCount =
   <div className="text-2xl font-bold">🎮 Play Scam Spotter</div>
   <div className="mt-1 text-blue-100">Can you tell safe messages from scams? Test yourself.</div>
 </a>
+<a
+  href="/password-checker"
+  className="mt-4 block rounded-xl bg-slate-800 p-6 text-white shadow-sm hover:bg-slate-900"
+>
+  <div className="text-2xl font-bold">🔑 Password Checker</div>
+  <div className="mt-1 text-slate-300">Check how strong your password is and if it was leaked.</div>
+</a>
 
         <h2 className="mt-12 text-2xl font-bold">Safety lessons</h2>
         <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
