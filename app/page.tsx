@@ -51,7 +51,7 @@ export default function Home() {
             <a href="#help" className="hover:text-blue-700">Get help</a>
           </nav>
           <a
-            href="#"
+            href="/login"
             className="rounded-lg bg-blue-700 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-800"
           >
             Log in
@@ -71,7 +71,7 @@ export default function Home() {
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <a
-              href="#"
+              href="/signup"
               className="rounded-lg bg-white px-6 py-3 font-semibold text-blue-800 hover:bg-blue-50"
             >
               Get started free
