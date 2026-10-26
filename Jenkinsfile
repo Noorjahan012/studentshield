@@ -1,10 +1,10 @@
 pipeline {
   agent any
 
-  environment {
+    environment {
     SONAR_TOKEN = credentials('sonar-token')
+    PATH = "C:\\Users\\new\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin;${env.PATH}"
   }
-
   stages {
     stage('Checkout') {
       steps { checkout scm }
