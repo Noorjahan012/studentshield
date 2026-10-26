@@ -1,8 +1,10 @@
+import Link from "next/link";
+
 export default function PrivacyPage() {
   return (
     <main className="min-h-screen bg-slate-50">
       <header className="border-b border-slate-200 bg-white px-6 py-4">
-        <a href="/" className="text-xl font-bold text-blue-700">🛡️ StudentShield</a>
+        <Link href="/" className="text-xl font-bold text-blue-700">🛡️ StudentShield</Link>
       </header>
       <section className="mx-auto max-w-2xl px-6 py-10 leading-7 text-slate-800">
         <h1 className="text-3xl font-bold">Privacy</h1>
@@ -16,7 +18,7 @@ export default function PrivacyPage() {
         </ul>
 
         <h2 className="mt-6 text-xl font-bold">Anonymous reports</h2>
-        <p className="mt-2">If you tick "Send anonymously", your report is saved without your account attached.</p>
+        <p className="mt-2">If you tick &quot;Send anonymously&quot;, your report is saved without your account attached.</p>
 
         <h2 className="mt-6 text-xl font-bold">Password and link checkers</h2>
         <p className="mt-2">The password you test is never saved. The breach check sends only part of a scrambled hash. Links you check stay in your browser.</p>

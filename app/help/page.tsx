@@ -1,3 +1,4 @@
+import Link from "next/link";
 const contacts = [
   { name: "National Cyber Crime Helpline", detail: "Call 1930 if you lost money in online fraud. Call quickly, as early reporting helps freeze the money." },
   { name: "Cyber Crime Portal", detail: "Report online crimes at cybercrime.gov.in", link: "https://cybercrime.gov.in" },
