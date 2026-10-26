@@ -1,4 +1,5 @@
 import Link from "next/link";
+
 const contacts = [
   { name: "National Cyber Crime Helpline", detail: "Call 1930 if you lost money in online fraud. Call quickly, as early reporting helps freeze the money." },
   { name: "Cyber Crime Portal", detail: "Report online crimes at cybercrime.gov.in", link: "https://cybercrime.gov.in" },
@@ -20,8 +21,8 @@ export default function HelpPage() {
   return (
     <main className="min-h-screen bg-slate-50">
       <header className="flex items-center justify-between border-b border-slate-200 bg-white px-6 py-4">
-        <a href="/" className="text-xl font-bold text-blue-700">🛡️ StudentShield</a>
-        <a href="/dashboard" className="text-sm font-semibold text-blue-700 underline">Dashboard</a>
+        <Link href="/" className="text-xl font-bold text-blue-700">🛡️ StudentShield</Link>
+        <Link href="/dashboard" className="text-sm font-semibold text-blue-700 underline">Dashboard</Link>
       </header>
 
       <section className="mx-auto max-w-2xl px-6 py-10">
